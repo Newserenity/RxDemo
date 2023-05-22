@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import RxSwift
+import RxRelay
+import RxCocoa
 
 class ViewController: UIViewController {
 
@@ -21,9 +24,14 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        
     }
-
-
 }
 
+// MARK: - Event Handling
+extension ViewController {
+    @IBAction func resetButtonTapped(_ sender: UIButton) {
+        
+    }
+}

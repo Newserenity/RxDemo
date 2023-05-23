@@ -12,7 +12,8 @@ import RxCocoa
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var FirstLabel: UILabel!
+    
+    @IBOutlet weak var firstLabel: UILabel!
     @IBOutlet weak var firstCount: UILabel!
     @IBOutlet weak var firstInput: UITextField!
     
@@ -20,12 +21,38 @@ class ViewController: UIViewController {
     @IBOutlet weak var secoundCount: UILabel!
     @IBOutlet weak var secoundInput: UITextField!
     
-    @IBOutlet weak var warningLabel: UILabel!
+    var disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        firstInput.rx.text
+            .orEmpty
+            .bind(to: firstLabel.rx.text)
+            .disposed(by: disposeBag)
         
+        firstInput.rx.text
+            .orEmpty
+            .map { $0.count.description }
+            .bind(to: firstCount.rx.text)
+            .disposed(by: disposeBag)
+
+        secoundInput.rx.text
+            .orEmpty
+            .bind(to: secoundLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        secoundInput.rx.text
+            .orEmpty
+            .map { $0.count.description }
+            .bind(to: secoundCount.rx.text)
+            .disposed(by: disposeBag)
+    }
+    
+    // override touchesBegan (키보드 내리기)
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.firstInput.resignFirstResponder()
+        self.secoundInput.resignFirstResponder()
     }
 }
 

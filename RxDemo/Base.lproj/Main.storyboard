@@ -139,7 +139,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="첫번째, 두번째를 입력해주세요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kyp-F1-ZDB">
                                 <rect key="frame" x="30" y="340.33333333333331" width="161.66666666666666" height="15.666666666666686"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
-                                <color key="textColor" systemColor="systemPinkColor"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -166,15 +166,14 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="FirstLabel" destination="0Dh-eS-bhd" id="DdZ-Z6-Vbw"/>
-                        <outlet property="firstCount" destination="je6-2F-UHS" id="2YS-7H-bvH"/>
-                        <outlet property="firstInput" destination="owe-Ce-HxT" id="nhS-VV-xU6"/>
-                        <outlet property="firstLabel" destination="0Dh-eS-bhd" id="YQt-tm-tNc"/>
-                        <outlet property="firstlabel" destination="0Dh-eS-bhd" id="AI4-6X-cL6"/>
-                        <outlet property="secoundCount" destination="8PG-E1-cRl" id="1wK-hK-Ha9"/>
-                        <outlet property="secoundInput" destination="fHO-Hq-Ajv" id="njE-7w-faf"/>
-                        <outlet property="secoundLabel" destination="vuM-oT-kpa" id="EQt-us-t4x"/>
-                        <outlet property="warningLabel" destination="Kyp-F1-ZDB" id="wqd-W4-Adi"/>
+                        <outlet property="firstCount" destination="je6-2F-UHS" id="bc1-7v-0B3"/>
+                        <outlet property="firstInput" destination="owe-Ce-HxT" id="NRi-ke-OdT"/>
+                        <outlet property="firstLabel" destination="0Dh-eS-bhd" id="J8y-m9-XIF"/>
+                        <outlet property="reset" destination="2pJ-a9-z6A" id="zIN-h0-VXd"/>
+                        <outlet property="secoundCount" destination="8PG-E1-cRl" id="yid-E1-9tQ"/>
+                        <outlet property="secoundInput" destination="fHO-Hq-Ajv" id="ntB-cg-6tQ"/>
+                        <outlet property="secoundLabel" destination="vuM-oT-kpa" id="Mxp-CO-R6r"/>
+                        <outlet property="warningLabel" destination="Kyp-F1-ZDB" id="GT5-Z8-LmV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -21,6 +21,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var secoundCount: UILabel!
     @IBOutlet weak var secoundInput: UITextField!
     
+    @IBOutlet weak var warningLabel: UILabel!
+    @IBOutlet weak var reset: UIButton!
+    
     var disposeBag = DisposeBag()
     
     override func viewDidLoad() {
@@ -28,6 +31,7 @@ class ViewController: UIViewController {
         
         firstInput.rx.text
             .orEmpty
+            .map { $0.isEmpty ? "입력하세요" : $0 }
             .bind(to: firstLabel.rx.text)
             .disposed(by: disposeBag)
         
@@ -39,6 +43,7 @@ class ViewController: UIViewController {
 
         secoundInput.rx.text
             .orEmpty
+            .map { $0.isEmpty ? "입력하세요" : $0 }
             .bind(to: secoundLabel.rx.text)
             .disposed(by: disposeBag)
         
@@ -46,6 +51,22 @@ class ViewController: UIViewController {
             .orEmpty
             .map { $0.count.description }
             .bind(to: secoundCount.rx.text)
+            .disposed(by: disposeBag)
+        
+        Observable.combineLatest(
+            firstInput.rx.text.orEmpty,
+            secoundInput.rx.text.orEmpty)
+            .map { firstInputText, secoundInputText in
+                return !firstInputText.isEmpty || !secoundInputText.isEmpty ? "OK" : "첫번째, 두번째를 입력하세요"
+            }
+            .bind(to: warningLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        reset.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.firstInput.text = ""
+                self?.secoundInput.text = ""
+            })
             .disposed(by: disposeBag)
     }
     

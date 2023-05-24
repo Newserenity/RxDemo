@@ -29,10 +29,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        createObservables()        
+        createObservables()
     }
     
     func createObservables() {
+        
         let firstHasValue : Observable<Bool> = firstInput.rx.text.orEmpty
             .map{ $0.count > 0 }
             .share(replay: 1)
@@ -40,14 +41,6 @@ class ViewController: UIViewController {
         let secondHasValue : Observable<Bool> = secoundInput.rx.text.orEmpty
             .map{ $0.count > 0 }
             .share(replay: 1)
-        
-        let firstInputText: Observable<String> = firstInput.rx.text
-            .orEmpty
-            .map { $0.isEmpty ? "입력하세요" : $0 }
-        
-        let secoundInputText: Observable<String> = secoundInput.rx.text
-            .orEmpty
-            .map { $0.isEmpty ? "입력하세요" : $0 }
         
         Observable
             .combineLatest(firstHasValue, secondHasValue)
@@ -57,13 +50,17 @@ class ViewController: UIViewController {
             .bind(to: warningLabel.rx.text)
             .disposed(by: disposeBag)
         
-        firstInputText
+        firstInput.rx.text
+            .orEmpty
+            .map { $0.isEmpty ? "입력하세요" : $0 }
             .subscribe(onNext: { [weak self] text in
                 self?.firstLabel.text = text
             })
             .disposed(by: disposeBag)
         
-        secoundInputText
+        secoundInput.rx.text
+            .orEmpty
+            .map { $0.isEmpty ? "입력하세요" : $0 }
             .subscribe(onNext: { [weak self] text in
                 self?.secoundLabel.text = text
             })

@@ -67,7 +67,7 @@
                                     <constraint firstAttribute="height" constant="50" id="ytJ-GH-b7M"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Reset" cornerStyle="capsule">
+                                <buttonConfiguration key="configuration" style="filled" title="Reset" cornerStyle="large">
                                     <color key="baseForegroundColor" systemColor="systemGray6Color"/>
                                     <color key="baseBackgroundColor" systemColor="systemPinkColor"/>
                                 </buttonConfiguration>
